@@ -15,6 +15,11 @@
 - name: "Show known endpoints"
   debug: msg="{{ portainer_known_endpoints }}"
 
+- name: "Install curl for endpoints"
+  apt:
+    name: curl
+    update_cache: yes
+
 - name: Define Endpoints
   shell: |
     curl --silent --show-error -o - {{ portainer_endpoint }}/endpoints \
